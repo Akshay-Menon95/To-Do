@@ -37,3 +37,9 @@ def todopatch(request,k):
         b.save()
         return Response(b.data)
     return Response(b.errors)
+
+@api_view(['DELETE'])
+def tododelete(request,k):
+    a=todo.objects.get(id=k)
+    a.delete()
+    return Response('Deleted successfully')
