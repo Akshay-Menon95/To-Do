@@ -17,4 +17,5 @@ def todocreate(request):
     a=task_serializer(data=request.data)
     if a.is_valid():
         a.save()
-    return Response(a.data)
+        return Response(a.data)
+    return Response(a.errors)
