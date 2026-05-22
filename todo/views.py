@@ -19,3 +19,12 @@ def todocreate(request):
         a.save()
         return Response(a.data)
     return Response(a.errors)
+
+@api_view(['PUT'])
+def todoupdate(request,pk):
+    a=todo.objects.get(id=pk)
+    b=task_serializer(instance=a,data=request.data)
+    if b.is_valid():
+        b.save()
+        return Response(b.data)
+    return Response(b.errors)
