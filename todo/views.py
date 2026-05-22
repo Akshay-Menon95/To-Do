@@ -21,9 +21,18 @@ def todocreate(request):
     return Response(a.errors)
 
 @api_view(['PUT'])
-def todoupdate(request,pk):
-    a=todo.objects.get(id=pk)
+def todoupdate(request,k):
+    a=todo.objects.get(id=k)
     b=task_serializer(instance=a,data=request.data)
+    if b.is_valid():
+        b.save()
+        return Response(b.data)
+    return Response(b.errors)
+
+@api_view(['PATCH'])
+def todopatch(request,k):
+    a=todo.objects.get(id=k)
+    b=task_serializer(instance=a,data=request.data,partial=True)
     if b.is_valid():
         b.save()
         return Response(b.data)
