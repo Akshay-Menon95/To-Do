@@ -4,7 +4,6 @@ from .models import todo
 from .serializer import task_serializer
 from rest_framework.response import Response
 
-
 # Create your views here.
 @api_view(['GET'])
 def todo_list(request):
