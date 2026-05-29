@@ -7,4 +7,6 @@ urlpatterns = [
     path('update/<int:k>/',views.todoupdate),
     path('patch/<int:k>/',views.todopatch),
     path('delete/<int:k>/',views.tododelete),
+    path('login/',views.loginpage,name='login'),
+    path('register/',views.registerpage,name='register')
     ]
